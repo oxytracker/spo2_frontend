@@ -1,0 +1,19 @@
+#header{
+  font-size: 2.5rem;
+  padding-top: 10px;
+}
+
+.navbar{
+  padding: 0 0 .75rem;
+}
+
+.form{
+  padding-top: 1rem;
+}
+
+.occup{
+  padding-left: .75rem;
+}
+.login-link{
+  padding-top: 1rem;
+}

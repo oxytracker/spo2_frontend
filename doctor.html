@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="row">
+  <div class="col-2 dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      Patient List
+    </a>
+
+    <ul class="dropdown-menu" id="dropdown-list" aria-labelledby="dropdownMenuLink">
+
+    </ul>
+  </div>
+  <div class="col-2">
+    <button class="btn btn-info btn-sm" type="button" name="button" id="clear">Clear</button>
+  </div>
+  </div>
+  <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div id="wrapper">
+                          <canvas id="canvas1" class="ch1"
+                                  style="width: 50%; height: 30%; background: #444444; border: 1px solid #444444; margin-top: 10px;">
+                          </canvas>
+                          <p>A plot of the SpO2 readings against time.</p>
+                          <script>
+                                  var c = document.getElementById("canvas1");
+                                  var ctx = c.getContext("2d");
+                                  ctx.font = "30px Arial";
+                                  ctx.fillText("Loading...", 10, 50);
+                          </script>
+                  </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div id="wrapper">
+                          <canvas id="canvas2" class="ch1"
+                                  style="width: 50%; height: 30%; background: #444444; border: 1px solid #444444; margin-top: 10px;">
+                          </canvas>
+                          <p>A plot of the BPM readings against time.</p>
+                          <script>
+                                  var c = document.getElementById("canvas2");
+                                  var ctx = c.getContext("2d");
+                                  ctx.font = "30px Arial";
+                                  ctx.fillText("Loading...", 10, 50);
+                          </script>
+                  </div>
+
+
+          </div>
+
+</div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script src="index.js"></script>
+<script>
+  window.onload = function(){
+    doctorCalled();
+  }
+</script>
+
+</html>
