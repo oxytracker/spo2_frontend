@@ -34,6 +34,8 @@ function register () {
   if(occup ==false){
     alert('not selcted')
     return
+  }else{
+    selectedOcc =  occup
   }
   auth.createUserWithEmailAndPassword(email, password)
   .then(function() {
@@ -48,7 +50,7 @@ function register () {
       last_login : Date.now()
     }
 
-    database_ref.child(selectedOcc + '/' + user.uid).set(user_data)
+    database_ref.child('login/'+selectedOcc + '/' + name).set(user_data)
 
     alert('User Created!!')
   })
@@ -108,6 +110,8 @@ function login(){
             setTimeout(function(){
             window.location.href= 'patient.html'
             },2000)
+          }else if(patientOcc == "nurse"){
+            window.location.href = 'nurse-form.html'
           }else{
             alert("invalid! try again ")
           }
@@ -131,7 +135,34 @@ function login(){
 
 }
 
+function table2(){
+  var database_ref = database.ref()
+  var data
+  var data1
+  name = document.getElementById('name').value
+  patientID = document.getElementById('patientID').value
+  var user_ref = database.ref('login/patient/'+name)
+  user_ref.on('value',function(snapshot) {
+    data = snapshot.val()
+    console.log(data);
 
+    // database_ref.child('table2/'+data.name).set(data)
+  })
+  var user_ref1 = database.ref('table3/'+patientID)
+  user_ref1.on('value',function(snapshot) {
+    data1 = snapshot.val()
+    console.log(data1);
+  })
+
+  var table2_data = {
+    name : data.name,
+    email : data.email,
+    patientID : data1.patientID,
+  }
+  database_ref.child('table2/'+data.name).set(table2_data)
+  alert("user added")
+
+}
 
 function validate_email(email) {
   expression = /^[^@]+@\w+(\.\w+)+\w$/
